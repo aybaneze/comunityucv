@@ -1,0 +1,37 @@
+body{   
+    background:rgb(0, 13, 83);
+    font-family: 'Amatic SC'; 
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  
+}
+
+#init{
+    justify-content: center;
+}
+
+.search{
+    float: right;
+}
+
+.form{
+    background: white;
+    width: 40%;
+    justify-content: center;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.hiden{
+    display:none;
+}
+
+nav{
+    height: 50px;
+    top: 0;
+    background: white;
+    position: fixed;
+}

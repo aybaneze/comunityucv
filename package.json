@@ -1,0 +1,29 @@
+{
+  "name": "lim-2018-05-bc-core-pm-socialnetwork",
+  "version": "1.0.0",
+  "description": "Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes sociales han invadido nuestras vidas. Las amamos u odiamos, y muchxs no podemos vivir sin ellas.",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OshinVillegas/lim-2018-05-bc-core-pm-socialnetwork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OshinVillegas/lim-2018-05-bc-core-pm-socialnetwork/issues"
+  },
+  "homepage": "https://github.com/OshinVillegas/lim-2018-05-bc-core-pm-socialnetwork#readme",
+  "dependencies": {
+    "andrea": "^1.0.0",
+    "bootstrap-social": "^5.1.1",
+    "bower": "^1.8.4",
+    "browser": "^0.2.6",
+    "chai": "^4.1.2",
+    "eslint": "^5.1.0",
+    "mocha": "^5.2.0",
+    "pkg": "^4.3.3"
+  }
+}
