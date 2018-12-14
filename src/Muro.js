@@ -103,8 +103,8 @@ function valposteos() {
             const p = document.createElement('p');
             p.innerHTML = `
                     <div class="w3-container w3-card w3-white w3-round w3-margin" style="width:90%;"><br>
-                    <div><img src="../imagenes/logoWeb.png" id="logoWeb"  style="width:30%;heigth:20%;"></div>
-                    <span class="w3-right w3-opacity">16 min</span>
+                    <div><img src="../comu.jpeg" id="logoWeb"  style="width:50px;heigth:50px;"></div>
+                    <span class="w3-right w3-opacity">1 min</span>
                     <div><p style="font-size:20px;"></p></div>
                     <div style="font-size:20px;" id=${item}>${snapshot.val()[item].body}</div><br>
                     <hr class="w3-clear">
