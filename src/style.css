@@ -41,8 +41,9 @@ body{
 }
 
 #Init{
-    justify-content: center;
-    align-content: center;
+   margin-left: 35%;
+   text-align: center;
+  justify-content: center;
 }
 
 .search{
@@ -70,10 +71,9 @@ body{
 .form{
     background: white;
     width: 35%;
-    justify-content: center;
+    display: flex;
     margin-top: 100px;
     text-align: center;
-
 }
 
 .hiden{
@@ -86,3 +86,18 @@ nav{
     background: white;
     position: fixed;
 }
+
+@media screen and (max-width: 600px) {
+    .form{
+        background: white;
+        width: 90%;
+        display: flex;
+        margin-top: 100px;
+        text-align: center;
+    }
+    #Init{
+        margin: 8%;
+        text-align: center;
+       justify-content: center;
+     }
+  }
