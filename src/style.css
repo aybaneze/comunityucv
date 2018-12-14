@@ -39,20 +39,41 @@ body{
  width:100%;
  text-align: center;
 }
-#init{
+
+#Init{
     justify-content: center;
+    align-content: center;
 }
 
 .search{
     float: right;
 }
 
+.google{
+    background: rgb(172, 1, 1);
+    color: white;
+    padding: 5px;
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 90%;
+}
+
+.facebook{
+    background: rgb(0, 0, 146);
+    color: white;
+    padding: 5px;
+    width: 90%;
+    margin-left: 15px;
+
+}
+
 .form{
     background: white;
-    width: 40%;
+    width: 35%;
     justify-content: center;
     margin-top: 100px;
     text-align: center;
+
 }
 
 .hiden{
