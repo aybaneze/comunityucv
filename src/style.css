@@ -87,6 +87,36 @@ nav{
     position: fixed;
 }
 
+.containerG{
+    width: 100%;
+}
+
+.img-port{
+    width: 70%;
+}
+
+.portada{
+    margin: 25px 0 20px;
+}
+.inp{
+    position: relative; 
+}
+.inp label{
+    position: absolute;
+    left: 143px;
+    bottom: -5px;
+    color: rgb(138, 138, 138);
+   
+}
+.inp-form{
+border: none;
+border-bottom: 1px solid #0105;
+position: relative;
+background: transparent;
+}
+
+
+
 @media screen and (max-width: 600px) {
     .form{
         background: white;
@@ -95,9 +125,23 @@ nav{
         margin-top: 100px;
         text-align: center;
     }
+    .inp label{
+        position: absolute;
+        left: 70px;
+        bottom: -5px;
+        color: rgb(138, 138, 138);
+       
+    }
+    .inp-form{
+        border: none;
+        border-bottom: 1px solid #0105;
+        position: relative;
+        background: transparent;
+        }
     #Init{
-        margin: 8%;
+        margin: 35% 10%;
         text-align: center;
        justify-content: center;
+       border-radius: 10px; 
      }
   }

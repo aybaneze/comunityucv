@@ -1,3 +1,7 @@
+$( ".inp-form" ).focus(function() {
+    $( ".inp label" ).css({"transition": "0.9s ease 0s", "top": "5px"})
+  });
+
 window.onload = () => {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
