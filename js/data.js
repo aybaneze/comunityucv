@@ -7,7 +7,7 @@ window.onload = () => {
         if (user) {
             data.classList.remove("hiden");
             Init.classList.add("hiden");
-            nav.classList.remove('hiden')
+            nav.classList.remove("hiden");
             Profile.innerHTML = "<img style='height:140px;width:140px;border-radius:100px;float:center;' src='" + user.photoURL + "'/>";
             UserCount.innerHTML = "<p>" + user.displayName + "</p>";
             console.log('Inicio sesion srta')
@@ -83,7 +83,7 @@ const logoutFunction = () => {
     firebase.auth().signOut().then(function () {
         Init.classList.remove('hiden');
         data.classList.add('hiden');
-        nav.classList.add('hiden')
+        nav.classList.add('hiden');
     }).catch(function (error) {
         console.log('error al cerrar sesion');
     })

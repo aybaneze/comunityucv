@@ -14,7 +14,7 @@ const Init= document.getElementById("Init");
 const data = document.getElementById('data');
 const Profile = document.getElementById('Profile');
 const UserCount = document.getElementById('UserCount');
-const nav = document.getElementsByTagName('nav');
+const nav = document.getElementById('nav');
 
 
 const state = {
