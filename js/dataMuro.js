@@ -38,6 +38,7 @@ btnSignin.addEventListener('click', signinFunction)
 btnLogout.addEventListener('click', logoutFunction)
 
 document.getElementById('muro').addEventListener('click', muro);
+
 function muro() {
-    window.location.href = 'indexMuro.html'
+    window.location.href = '../views/indexMuro.html'
 }

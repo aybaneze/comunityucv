@@ -16,14 +16,54 @@
 </head>
 
 <body class=" indigo darken-4">
+
+    <nav class="nav-extended black position-relative hiden">
+        <div class="nav-wrapper white">
+          <div class="row m-bottom">
+              <div class="col s10 img-portada">
+                  <img src="../imagenes/comunidad.png" class="w-100">
+                </div>
+                <div class="col s2 img-portada">
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger  "><i class="material-icons indigo-text darken-4-text">menu</i></a>
+                </div> 
+          </div>
+            
+            <ul id="nav-mobile" class="right hide-on-med-and-down black">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+        <div class="nav-content white">
+          <ul class="tabs tabs-transparent ">
+            <li class="tab" id="muro"><a href="#" class="active black-text">INICIO</a></li>
+            <li class="tab"><a href="#test2" class="black-text">Notificaciones</a></li>
+            <li class="tab disabled"><a href="#test3" class="black-text">CHAT</a></li>
+            <li class="tab" id="botoncerrar"><a href="#tes" class="black-text" >salir</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="sass.html black">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    
+      <div id="test1" class="col s12">Test 1</div>
+      <div id="test2" class="col s12">Test 2</div>
+      <div id="test3" class="col s12">Test 3</div>
+      <div id="test4" class="col s12">Test 4</div>
+      <!-- cabecera -->
+
+      
     <div class="container">
       <div class="row"> 
         <!-- Page Content goes here -->
       
   <!-- debe ir el class="hiden"  -->
-  <div id="Init" class="form col s10 l6 center-align">
+  <div id="Init" class="form col s12 l6 center-align">
     <!-- formulario de registro -->
-
     <div class="container">
       <div class="portada">
         <img src="../imagenes/comunidad.png" class="img-port">
@@ -67,7 +107,7 @@
              </div>
            </div>
           </div>
-          <div class="row">
+          <div class="row m-top">
             <div class="col s8">
                 <p>¿No Tienes Una cuenta?</p>
             </div>
@@ -87,12 +127,14 @@
                       <input id="name" type="text" class="validate">
                       <label for="first_name">Nombres</label>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="text" class="validate">
-                        <label for="first_name">Correo Electrónico</label>
-                      </div>
+                      <input id="email" type="text" class="validate">
+                      <label for="first_name">Correo Electrónico</label>
                     </div>
-                    <div class="row">
+                  </div>
+                  <div class="row">
                     <div class="input-field col s12">
                       <input id="pass" type="password" class="validate">
                       <label for="last_name">Contraseña</label>
@@ -116,7 +158,7 @@
             </button>
           </div>
 
-              <div class="row">
+          <div class="row m-top">
             <div class="col s8">
                 <p>¿Ya Tienes Una cuenta?</p>
             </div>
@@ -126,23 +168,20 @@
           </div>
         </div>
       </div>
-
-
-
-
     </div>
   </div>
 
 
 
 
-  <div id="data" class="hiden">
+
+  <div id="data" class="hiden col s12">
     <div class="w3-container w3-white w3-top" style="float:right">
       <div class="w3-hover w3-cell-row">
         <button id="muro" class="w3-button w3-padding-large">General</button>
         <button class="w3-button w3-padding-large">Notificaciones <span class="number">3</span></button>
         <button class="w3-button w3-padding-large">Mensajes <span class="number">7</span></button>
-        <button id="botoncerrar" class="w3-button w3-padding-large" title="Cerrar Sesión">Salir</button>
+        <button  class="w3-button w3-padding-large" title="Cerrar Sesión">Salir</button>
         <form class="form-inline my-2 my-lg-0 search">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary align-right my-2 my-sm-0" type="submit">Search</button>

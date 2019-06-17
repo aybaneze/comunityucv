@@ -97,6 +97,13 @@ body{
     padding: 5px;
 }
 
+.m-top{
+    margin-top: 20px;
+}
+.m-bottom{
+    margin-bottom: 0;
+}
+
 button span{
     position: absolute;
     left: 13px;
@@ -110,6 +117,9 @@ button{
     border-radius: 5px !important;
     font-family: 'NunitoSans-Bold';
 }
+.position-relative{
+    position: relative;
+}
 a{
     color: #252525;
 }
@@ -119,15 +129,17 @@ a{
     font-family: 'NunitoSans-Bold';
 }
 
-
 .facebook.btn:hover{
     background: #192d4e;
 }
 .google.btn:hover{
     background: #b3281e;
 }
-
-
+.img-portada{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
 /* Iconos */
   .icon-facebook-2:before {
@@ -139,6 +151,11 @@ a{
     content: "\e901";
     font-size: 18px;
   }
+
+/* clase para desaparecer cualquier elemento */
+  .hiden{
+    display:none !important;
+    }
 
 
 
@@ -209,10 +226,6 @@ a{
     text-align: center;
 }
 
-.hiden{
-    display:none;
-}
-
 nav{
     height: 50px;
     top: 0;
@@ -252,4 +265,17 @@ input[type="text"]:not(.browser-default):focus:not([redonly])+label, input[type=
     #Init{
         margin: 21% auto;
       }
+      
+    button.google, button.facebook{
+    padding-left: 23px;
+    font-size: 11px;
+    }
+
+    p,a{
+    font-size: 11px;
+    }
+    .link-a{
+        padding: 8px 0 !important;
+    }
+
   }
