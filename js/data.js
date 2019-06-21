@@ -8,7 +8,7 @@ window.onload = () => {
             data.classList.remove("hiden");
             Init.classList.add("hiden");
             nav.classList.remove("hiden");
-            Profile.innerHTML = "<img style='height:140px;width:140px;border-radius:100px;float:center;' src='" + user.photoURL + "'/>";
+            $('.Profile').append("<img class='profile-img' style='height:140px;width:140px;border-radius:100px;float:center;' src='" + user.photoURL + "'/>");
             UserCount.innerHTML = "<p>" + user.displayName + "</p>";
             console.log('Inicio sesion srta')
         } else {

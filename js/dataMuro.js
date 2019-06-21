@@ -12,7 +12,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const Init= document.getElementById("Init");
 const data = document.getElementById('data');
-const Profile = document.getElementById('Profile');
+let Profile = document.getElementsByClassName('Profile'); 
 const UserCount = document.getElementById('UserCount');
 const nav = document.getElementById('nav');
 
@@ -43,3 +43,4 @@ document.getElementById('muro').addEventListener('click', muro);
 function muro() {
     window.location.href = '../views/indexMuro.html'
 }
+
