@@ -212,7 +212,7 @@ function valposteos() {
                     <span class="w3-right w3-opacity" style="font-size: 10px;">${snapshot.val()[item].hour}</span>
                     <div><p style="font-size:20px;"></p></div>
                     <div style="font-size:20px;" id=${item}>${snapshot.val()[item].body}</div><br>
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}','${userId}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item].likeCount}</button>  
+                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item].likeCount}</button>  
                     <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "removePost('${item}')"><i class="far fa-trash-alt"></i> ELIMINAR</button>         
                     <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "editPost('${item}')"><i class="far fa-edit"></i>EDITAR</button>
                     </div>
@@ -226,8 +226,8 @@ function valposteos() {
 }
 
 
-function like(postkey,uid) {
-    let postIds= firebase.database().ref('posts/'+ uid + '/' + postkey); 
+function like(item) {
+    let postIds= firebase.database().ref('posts/'+ item); 
     postIds.transaction(function(element){
         console.log(element)
      if(element){
