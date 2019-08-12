@@ -127,13 +127,18 @@ button span{
     left: 13px;
     top: 7px;
 }
-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 5px !important;
+.profile-info button{
+    width: 65px;
+    height: 50px;
+    background: #000;
+    color: white;
+    border: none;
+    margin: 5px;
     font-family: 'NunitoSans-Bold';
+    cursor: pointer;
+}
+button:hover{
+    background: blue;
 }
 .position-relative{
     position: relative;
@@ -207,7 +212,51 @@ a{
 }
 
 .pos{
-    margin-top: 10%;
+    background: #fff;
+    padding: 10px;
+}
+h6.status{
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    top: -27px;
+    left: 10px;
+    background: #fff;
+    border: 5px solid #fff;
+}
+.container-publish{
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.container-publish button{
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+.container-publish p{
+    margin-bottom: 0;
+    font-size: 11px;
+    text-align: right;
+}
+.card-publish-user{
+    padding: 10px 20px 20px;
+    border-bottom: 10px solid rgb(219, 219, 219);
+}
+.card-publish-user button{
+    font-size: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.info-card{
+    display: inline-flex;
+    width: 100%;
 }
 
 .postea{
@@ -215,7 +264,7 @@ a{
 }
 
 .card{
- margin-top: 15%;
+ margin-top: 10px;
  width:100%;
  text-align: center;
 }
@@ -256,6 +305,28 @@ nav{
 .containerG{
     width: 100%;
 }
+#data .container{
+    width: 100%;
+}
+.photo-portada{
+background: #252525;
+width: 100%;
+min-height: 160px;
+max-height: 160px;
+}
+
+.principal-photo{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+}
+.profile-info{
+    margin-top: 80px;
+}
+.organizador{
+    display: inline-flex;
+}
 
 .img-port{
     width: 70%;
@@ -292,7 +363,9 @@ input[type="text"]:not(.browser-default):focus:not([redonly])+label, input[type=
     }
 
     p,a{
-    font-size: 11px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 900;
     }
     .link-a{
         padding: 8px 0 !important;

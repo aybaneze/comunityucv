@@ -94,14 +94,14 @@
           <div class="row">
               <div class="col s12">
                   <button id="google" class="google btn waves-effect">
-                      <span class="icon-google-plus-2"></span>Inicia Sesión con Google
+                      Inicia Sesión con Google
                   </button>
               </div>
           </div>
            <div class="row">
              <div class="col s12">
                 <button id="facebook" class="facebook btn">
-                    <span class="icon-facebook-2"></span> Inicia Sesión con Facebook
+                    Inicia Sesión con Facebook
                   </button>
              </div>
            </div>
@@ -180,30 +180,19 @@
         <div class="w3-container w3-content">
           <div class="w3-card w3-round w3-white card">
             <div class="w3-container">
-                <h4 class="w3-center"><span id="UserCount"></span></h4>
-              <p class="w3-center">
-                <div class="Profile" onclick="document.getElementById('modal01').style.display='block'" alt="Avatar"></div>
-                <hr>
-                <p><i class="fas fa-graduation-cap"></i> ESTUDIANTE</p>
-                <p><i class="fas fa-globe-americas"></i> SURCO, LIMA</p>
-                <p><i class="fas fa-birthday-cake"></i> 27 JUNIO</p>
+                <div class="photo-portada">
+                  </div> 
+              <div class="Profile principal-photo" onclick="document.getElementById('modal01').style.display='block'" alt="Avatar"></div>
             </div>
-            <div class="w3-card w3-round">
-              <div class="w3-white">
+            <div class="profile-info"> 
+              <h4 class="w3-center"><span id="UserCount"></span></h4>
+              <div class="organizador">
                 <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align">
-                  <i class="fas fa-users"></i> Grupos </button>
-                <div id="Demo1" class="w3-hide w3-container">
-                  <p>Some text..</p>
-                </div>
+                  <i class="fas fa-users"></i> Grupos </button>            
                 <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align">
                   <i class="fas fa-calendar-alt"></i> Eventos </button>
-                <div id="Demo2" class="w3-hide w3-container">
-                  <p>Some other text..</p>
-                </div>
                 <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align">
                   <i class="fas fa-images"></i> Fotos </button>
-                <div id="Demo3" class="w3-hide w3-container">
-                </div>
               </div>
             </div>
           </div>
@@ -215,12 +204,15 @@
         <div class="postea ">
           <div class="w3-row-padding">
             <div class="w3-card w3-round w3-white">
-              <div class="w3-container w3-padding">
-                <h6 class="w3-opacity">Estado</h6>
-                <input id="post" type="text" placeholder='Que estas pensando' class="w3-border w3-padding"><br>
-                <button id='botonpostea' class="w3-button w3-theme"><i class="fas fa-edit"></i> Publicar</button>
-                <button class="w3-button w3-theme"><i class="fa fa-camera"></i> Foto</button>
-                <p>Privado</p>
+              <div class="w3-container w3-padding position-relative">
+                <h6 class="w3-opacity status">Estado</h6>
+                <div class="container-publish">
+                    <input id="post" type="text" placeholder='¿Qué estás pensando?' class="w3-border w3-padding">
+                    <button id='botonpostea' class="w3-button w3-theme"><i class="fas fa-edit"></i> Publicar</button>
+                    <button class="w3-button w3-theme"><i class="fa fa-camera"></i> Foto</button>
+                    <p>Privacidad:<span> Todos</span></p>
+                </div>
+               
               </div>
             </div>
           </div>

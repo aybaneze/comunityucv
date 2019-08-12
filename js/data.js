@@ -2,19 +2,23 @@ $( ".inp-form" ).focus(function() {
     $( ".inp label ")
   });
 
+let globalPhoto;
+let globalName;
+
 window.onload = () => {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             data.classList.remove("hiden");
             Init.classList.add("hiden");
             nav.classList.remove("hiden");
-            $('.Profile').append("<img class='profile-img' style='height:140px;width:140px;border-radius:100px;float:center;' src='" + user.photoURL + "'/>");
-            UserCount.innerHTML = "<p>" + user.displayName + "</p>";
-            console.log('Inicio sesion srta')
+            $('.Profile').append("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
+            globalPhoto = user.photoURL;
+            globalName = user.displayName;
+            UserCount.innerHTML = "<p>" + user.displayName + "</p>";      
         } else {
+            $('.Profile').remove("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
             Init.classList.remove("hiden");
-            data.classList.add('hiden');
-            console.log('Inicio sesion srta')
+            data.classList.add('hiden');   
         }
         valposteos()
     });
@@ -28,7 +32,6 @@ function guardaDatos(user) {
         email: user.email,
         foto: user.photoURL
     }
-
     firebase.database().ref('freww/' + user.uid)
         .set(usuario)
 }
@@ -133,6 +136,9 @@ function writeNewPost(uid, body) {
         uid: uid,
         body: body,
         likeCount: 0,
+        hour: window.Date().slice(4,21),
+        photo: globalPhoto,
+        name: globalName 
 
     };
 
@@ -142,11 +148,11 @@ function writeNewPost(uid, body) {
 
         // Write the new post's data simultaneously in the posts list and the user's post list.
         var updates = {};
-        updates['/posts/' + uid + '/' + newPostKey] = postData;
+        updates['/posts/' + newPostKey] = postData;
     }
     else {
         var updates = {};
-        updates['/posts/' + uid + '/' + postKeyUpdate] = postData;
+        updates['/posts/' + postKeyUpdate] = postData;
         postKeyUpdate = '';
     }
     firebase.database().ref().update(updates);
@@ -195,18 +201,17 @@ const div = document.createElement('div');
 function valposteos() {
     while (div.firstChild) div.removeChild(div.firstChild);
     var userId = firebase.auth().currentUser.uid;
-    const promesita = firebase.database().ref('/posts').child(userId).once('value');
+    const promesita = firebase.database().ref('/posts').once('value');
     const posteos = promesita.then(function (snapshot) {
         Object.keys(snapshot.val()).map(item => {
             const p = document.createElement('p');
 
             p.innerHTML = `
-                    <div class="w3-container w3-card w3-white w3-round w3-margin" style="width:90%;"><br>
-                    <div><img src="../comu.jpeg" id="logoWeb"  style="width:30%;heigth:20%;"></div>
-                    <span class="w3-right w3-opacity">16 min</span>
+                    <div class="card-publish-user"><br>
+                    <div class="info-card"><img src="${snapshot.val()[item].photo}" style="width:40px;height:40px;border-radius:10px; margin-right:15px"><p>${snapshot.val()[item].name}</p></div>
+                    <span class="w3-right w3-opacity" style="font-size: 10px;">${snapshot.val()[item].hour}</span>
                     <div><p style="font-size:20px;"></p></div>
                     <div style="font-size:20px;" id=${item}>${snapshot.val()[item].body}</div><br>
-                    <hr class="w3-clear">
                     <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}','${userId}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item].likeCount}</button>  
                     <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "removePost('${item}')"><i class="far fa-trash-alt"></i> ELIMINAR</button>         
                     <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "editPost('${item}')"><i class="far fa-edit"></i>EDITAR</button>
