@@ -15,7 +15,7 @@ window.onload = () => {
           Object.keys(snapshot.val()).map(item =>{
              if(snapshot.val()[item].active === 'si'){
                let chat = document.getElementById('js-chat-content');
-                chat.innerHTML=`<div class="personal-chat"><img src="${snapshot.val()[item].foto}" /><span class="circle-active">0</span><p>${snapshot.val()[item].nombre}</p></div>`
+                chat.innerHTML +=`<div class="personal-chat"><img src="${snapshot.val()[item].foto}" /><span class="circle-active">0</span><p>${snapshot.val()[item].nombre}</p></div>`
              }
           }         
             )
