@@ -15,7 +15,6 @@ window.onload = () => {
             globalPhoto = user.photoURL;
             globalName = user.displayName;
             UserCount.innerHTML = "<p>" + user.displayName + "</p>";   
-            userActive(user)
         } else {
             $('.Profile').remove("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
             Init.classList.remove("hiden");
