@@ -263,7 +263,7 @@ function like(item) {
 
 //console.log(valposteos());
 
-botonpostea.addEventListener('click', () => {
+postPrivate.addEventListener('click', () => {
  let textVacio = post.value.trim();
  console.log(textVacio)
 if(post.value != '' && textVacio != "" ){
