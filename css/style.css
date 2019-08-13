@@ -348,12 +348,13 @@ input[type="text"]:not(.browser-default):focus:not([redonly])+label, input[type=
     min-width: 100%;
     min-height: 90vh;
     padding: 50px;
-    display: flex;
+    text-align: center;
 }
 .personal-chat{
     height: 120px;
     text-align: center;
     padding: 10px 20px;
+    display: inline-block;
     -webkit-box-shadow: 13px 13px 22px -19px rgba(0,0,0,0.75);
     -moz-box-shadow: 13px 13px 22px -19px rgba(0,0,0,0.75);
     box-shadow: 13px 13px 22px -19px rgba(0,0,0,0.75);
@@ -406,5 +407,13 @@ input[type="text"]:not(.browser-default):focus:not([redonly])+label, input[type=
     .link-a{
         padding: 8px 0 !important;
     }
+    .chat-content{
+    padding: 10px;
+    }
+    .personal-chat p{
+        font-size: 12px;
+        font-weight: 800;
+    }
+
 
   }
