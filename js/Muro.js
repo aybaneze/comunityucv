@@ -1,6 +1,6 @@
 
 document.getElementById('muro').addEventListener('click', function perfil() {
-    window.location.href = 'index.html'
+    window.location.href = 'https://aybaneze.github.io/comunityucv/src/'
 });
 
 
