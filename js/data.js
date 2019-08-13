@@ -14,7 +14,8 @@ window.onload = () => {
             $('.Profile').append("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
             globalPhoto = user.photoURL;
             globalName = user.displayName;
-            UserCount.innerHTML = "<p>" + user.displayName + "</p>";      
+            UserCount.innerHTML = "<p>" + user.displayName + "</p>";   
+            userActive(user)
         } else {
             $('.Profile').remove("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
             Init.classList.remove("hiden");
@@ -30,7 +31,8 @@ function guardaDatos(user) {
         uid: user.uid,
         nombre: user.displayName,
         email: user.email,
-        foto: user.photoURL
+        foto: user.photoURL,
+        active: 'si',
     }
     firebase.database().ref('freww/' + user.uid)
         .set(usuario)
@@ -148,11 +150,11 @@ function writeNewPost(uid, body) {
 
         // Write the new post's data simultaneously in the posts list and the user's post list.
         var updates = {};
-        updates['/posts/' + newPostKey] = postData;
+        updates['/posts/' + uid + '/' + newPostKey] = postData;
     }
     else {
         var updates = {};
-        updates['/posts/' + postKeyUpdate] = postData;
+        updates['/posts/'+ uid + '/' +  postKeyUpdate] = postData;
         postKeyUpdate = '';
     }
     firebase.database().ref().update(updates);
@@ -161,9 +163,10 @@ function writeNewPost(uid, body) {
 }
 
 
-function removePost(postkey) {
+function removePost(itemId,postkey) {
     var uid = firebase.auth().currentUser.uid;
-    let path = '/posts/' + uid + '/' + postkey;
+    if(itemId === uid){
+         let path = '/posts/'+itemId+ '/' + postkey;
     firebase.database().ref(path).remove().then(function () {
         valposteos();
         alert("desea eliminar su comentario")
@@ -172,6 +175,8 @@ function removePost(postkey) {
             console.log("ERROR PE: " + error.message)
         });
 
+    }
+   
 }
 
 function editPost(postkey) {
@@ -204,25 +209,42 @@ function valposteos() {
     const promesita = firebase.database().ref('/posts').once('value');
     const posteos = promesita.then(function (snapshot) {
         Object.keys(snapshot.val()).map(item => {
+            objSubPost = Object.keys(snapshot.val()[item])
             const p = document.createElement('p');
-
-            p.innerHTML = `
+            for(let i = 0; i < objSubPost.length ; i++){  
+                if(userId ===item){     
+            p.innerHTML += `
                     <div class="card-publish-user"><br>
-                    <div class="info-card"><img src="${snapshot.val()[item].photo}" style="width:40px;height:40px;border-radius:10px; margin-right:15px"><p>${snapshot.val()[item].name}</p></div>
-                    <span class="w3-right w3-opacity" style="font-size: 10px;">${snapshot.val()[item].hour}</span>
+                    <div class="info-card"><img src="${snapshot.val()[item][objSubPost[i]].photo}" style="width:40px;height:40px;border-radius:10px; margin-right:15px"><p>${snapshot.val()[item][objSubPost[i]].name}</p></div>
+                    <span class="w3-right w3-opacity" style="font-size: 10px;">${snapshot.val()[item][objSubPost[i]].hour}</span>
                     <div><p style="font-size:20px;"></p></div>
-                    <div style="font-size:20px;" id=${item}>${snapshot.val()[item].body}</div><br>
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item].likeCount}</button>  
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "removePost('${item}')"><i class="far fa-trash-alt"></i> ELIMINAR</button>         
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "editPost('${item}')"><i class="far fa-edit"></i>EDITAR</button>
+                    <div style="font-size:20px;" id=${item}>${snapshot.val()[item][objSubPost[i]].body}</div><br>
+                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}','${objSubPost[i]}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item][objSubPost[i]].likeCount}</button> 
+                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "removePost('${item}','${objSubPost[i]}')"><i class="far fa-trash-alt"></i> ELIMINAR</button>         
+                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "editPost('${item}','${objSubPost[i]}')"><i class="far fa-edit"></i>EDITAR</button>
                     </div>
                     </div> 
                     </div><br>`;
-            return div.appendChild(p)
+                    }else{
+                        p.innerHTML += `
+                        <div class="card-publish-user"><br>
+                        <div class="info-card"><img src="${snapshot.val()[item][objSubPost[i]].photo}" style="width:40px;height:40px;border-radius:10px; margin-right:15px"><p>${snapshot.val()[item][objSubPost[i]].name}</p></div>
+                        <span class="w3-right w3-opacity" style="font-size: 10px;">${snapshot.val()[item][objSubPost[i]].hour}</span>
+                        <div><p style="font-size:20px;"></p></div>
+                        <div style="font-size:20px;" id=${item}>${snapshot.val()[item][objSubPost[i]].body}</div><br>
+                        <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}','${objSubPost[i]}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item][objSubPost[i]].likeCount}</button>
+                        </div>
+                        </div> 
+                        </div><br>`;
+                    }
+                   
+            }         
+            div.appendChild(p)
+          return  content.appendChild(div)
         })
         return snapshot.val();
     });
-    console.log(posteos);
+
 }
 
 
@@ -241,7 +263,7 @@ function like(item) {
 
 
 //console.log(valposteos());
-content.appendChild(div)
+
 botonpostea.addEventListener('click', () => {
  let textVacio = post.value.trim();
  console.log(textVacio)
@@ -257,4 +279,5 @@ else{
     alert("Para publicar debes poner texto");
 }
 });
+
 

@@ -343,6 +343,42 @@ input[type="text"]:not(.browser-default):focus:not([redonly])+label, input[type=
     font-weight: 500;
 }
 
+.chat-content{
+    background: #fff;
+    min-width: 100%;
+    min-height: 90vh;
+    padding: 50px;
+    display: flex;
+}
+.personal-chat{
+    height: 120px;
+    text-align: center;
+    padding: 10px 20px;
+    -webkit-box-shadow: 13px 13px 22px -19px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 13px 22px -19px rgba(0,0,0,0.75);
+    box-shadow: 13px 13px 22px -19px rgba(0,0,0,0.75);
+    position: relative;
+    border-radius: 20px;
+}
+
+.personal-chat img{
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+
+}
+.personal-chat span.circle-active{
+    width: 20px;
+    padding-left: 2px;
+    height: 20px;
+    background: rgb(0, 195, 0);
+    color: rgb(0, 195, 0);
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    right: 33px;
+}
+
 
 
 @media screen and (max-width: 600px) {
