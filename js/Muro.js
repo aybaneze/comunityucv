@@ -15,7 +15,7 @@ window.onload = () => {
             globalName = user.displayName;
             UserCount.innerHTML = "<p>" + user.displayName + "</p>";   
         } else {
-        
+            window.location.href = 'https://aybaneze.github.io/comunityucv/src/'
         }
         valposteos()
     });

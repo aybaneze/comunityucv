@@ -14,13 +14,14 @@ window.onload = () => {
             $('.Profile').append("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
             globalPhoto = user.photoURL;
             globalName = user.displayName;
-            UserCount.innerHTML = "<p>" + user.displayName + "</p>";   
+            UserCount.innerHTML = "<p>" + user.displayName + "</p>";  
+            valposteos(); 
         } else {
-            $('.Profile').remove("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
             Init.classList.remove("hiden");
-            data.classList.add('hiden');   
-        }
-        valposteos()
+            data.classList.add('hiden');  
+            nav.classList.add('hiden'); 
+        }  
+  
     });
 
 }
@@ -84,10 +85,11 @@ const signinFunction = () => {
 }
 
 const logoutFunction = () => {
-    firebase.auth().signOut().then(function () {
-        Init.classList.remove('hiden');
-        data.classList.add('hiden');
-        nav.classList.add('hiden');
+    firebase.auth().signOut().then(function (out) {
+        console.log(out);
+        // Init.classList.remove('hiden');
+        // data.classList.add('hiden');
+        // nav.classList.add('hiden');
     }).catch(function (error) {
         console.log('error al cerrar sesion');
     })
@@ -256,12 +258,8 @@ function like(item) {
         window.location.reload(true);
      }
      return element;
-    })  
-    
+    })     
 }
-
-
-//console.log(valposteos());
 
 postPrivate.addEventListener('click', () => {
  let textVacio = post.value.trim();
