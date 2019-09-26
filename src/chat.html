@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+         <!-- Compiled and minified CSS -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+         <!-- Compiled and minified JavaScript -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+         <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+<body>
+        <nav id="nav" class="nav-extended black position-relative">     
+                <div class="nav-wrapper white h-90">
+                  <div class="row m-bottom  center-align-div p-t-25">
+                    <div class="Profile nav-img col s3 center-align-div" alt="Avatar"></div>
+                    <div class="col s9 center-align-div">        
+                        <input class="search" type="text" placeholder="¿Qué Deseas Buscar?"> 
+                    </div>
+                    <div class="col l9">
+                        <ul id="nav-mobile" class="right hide-on-med-and-down black">
+                            <li><a href="sass.html">Sass</a></li>
+                            <li><a href="badges.html">Components</a></li>
+                            <li><a href="collapsible.html">JavaScript</a></li>
+                          </ul>
+                    </div>
+                  </div>      
+                </div>
+                <div class="nav-content white">
+                  <ul class="tabs tabs-transparent ">
+                    <li class="tab" id="muro"><a href="https://aybaneze.github.io/comunityucv/src/" class="active black-text">noticias</a></li>
+                    <li class="tab"><a href="#test2" class="black-text">Notificaciones</a></li>
+                    <li class="tab disabled"><a href="https://aybaneze.github.io/comunityucv/src/chat.html" class="black-text">CHAT</a></li>
+                    <li class="tab" id="botoncerrar"><a href="#tes" class="black-text" >salir</a></li>
+                  </ul>
+                </div>
+              </nav>
+    <div class="container">
+        <div class="row">
+            <div id="js-chat-content" class="chat-content">
+                            <!-- viene desde js  -->
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>     
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script>
+          // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAd-_QsITc2hsVEPLgnB2TSVLe2xkfT8fs",
+      authDomain: "nuestra-red-social.firebaseapp.com",
+      databaseURL: "https://nuestra-red-social.firebaseio.com",
+      projectId: "nuestra-red-social",
+      storageBucket: "nuestra-red-social.appspot.com",
+      messagingSenderId: "202930589167"
+    };
+    firebase.initializeApp(config);
+  </script>
+    <script src="../js/chat.js"></script>
+</body>
+</html>

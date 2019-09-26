@@ -1,20 +1,24 @@
 
-document.getElementById('perfil').addEventListener('click', perfil);
-function perfil() {
-    window.location.href = 'index.html'
-}
+document.getElementById('muro').addEventListener('click', function perfil() {
+    window.location.href = 'https://aybaneze.github.io/comunityucv/src/'
+});
+
+
+var postPrivate = document.getElementById('postPrivate');
 
 
 window.onload = () => {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            console.log('Inicio sesion srta')
+            $('.Profile').append("<img class='profile-img' style='height:140px;width:140px;border-radius:10px;float:center;border:5px solid #fff;' src='" + user.photoURL + "'/>");
+            globalPhoto = user.photoURL;
+            globalName = user.displayName;
+            UserCount.innerHTML = "<p>" + user.displayName + "</p>";   
         } else {
-        
+            window.location.href = 'https://aybaneze.github.io/comunityucv/src/'
         }
         valposteos()
     });
-
 }
 
 document.getElementById('botoncerrar').addEventListener('click', ()=>{
@@ -28,16 +32,16 @@ document.getElementById('botoncerrar').addEventListener('click', ()=>{
 
 let postKeyUpdate = '';
 
-function writeNewPost(uid, body) {
-    console.log('write');
-    // A post entry.
+
+function writeNewPost(uid, body){
     var postData = {
         uid: uid,
         body: body,
         likeCount: 0,
-
+        hour: window.Date().slice(4,21),
+        photo: globalPhoto,
+        name: globalName 
     };
-
     if (postKeyUpdate == '') {
         // Get a key for a new Post.
         var newPostKey = firebase.database().ref().child('user-posts').push().key;
@@ -55,14 +59,11 @@ function writeNewPost(uid, body) {
     }
     firebase.database().ref().update(updates);
     return newPostKey;
-
 }
-
 
 function removePost(postkey) {
     let uid = firebase.auth().currentUser.uid;
     let path = '/posts/' + uid + '/' + postkey;
-    let path = '/user-posts/' + postKey;
     console.log(path)
     firebase.database().ref(path).remove().then(function () {
         valposteos();
@@ -92,28 +93,29 @@ let post = document.getElementById('post');
 let content = document.getElementById('content');
 const botonpostea = document.getElementById('botonpostea');
 
+
 const div = document.createElement('div');
 function valposteos() {
    while (div.firstChild) div.removeChild(div.firstChild);
-    let promise = firebase.database().ref().child('user-posts').once('value');
-     console.log(promise)
-      let posteos = promise.then(function (snapshot) {
-        Object.keys(snapshot.val()).map(item => {
-          
-            const p = document.createElement('p');
-            p.innerHTML = `
-                    <div class="w3-container w3-card w3-white w3-round w3-margin" style="width:90%;"><br>
-                    <div><img src="../comu.jpeg" id="logoWeb"  style="width:50px;heigth:50px;"></div>
-                    <span class="w3-right w3-opacity">1 min</span>
-                    <div><p style="font-size:20px;"></p></div>
-                    <div style="font-size:20px;" id=${item}>${snapshot.val()[item].body}</div><br>
-                    <hr class="w3-clear">
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item].likeCount}</button>  
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "removePost('${item}')"><i class="far fa-trash-alt"></i> ELIMINAR</button>         
-                    <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "editPost('${item}')"><i class="far fa-edit"></i>EDITAR</button>
-                    </div>
-                    </div> 
-                    </div><br>`;
+   var userId = firebase.auth().currentUser.uid;
+   const promesita = firebase.database().ref('/posts').child(userId).once('value');
+   const posteos = promesita.then(function (snapshot) {
+       Object.keys(snapshot.val()).map(item => {
+        objSubPost = Object.keys(snapshot.val())
+           const p = document.createElement('p');    
+           p.innerHTML += `
+                   <div class="card-publish-user"><br>
+                   <div class="info-card"><img src="${snapshot.val()[item].photo}" style="width:40px;height:40px;border-radius:10px; margin-right:15px"><p>${snapshot.val()[item].name}</p></div>
+                   <span class="w3-right w3-opacity" style="font-size: 10px;">${snapshot.val()[item].hour}</span>
+                   <div><p style="font-size:20px;"></p></div>
+                   <div style="font-size:20px;" id=${item}>${snapshot.val()[item].body}</div><br>
+                   <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick ="like('${item}')"><i class="far fa-thumbs-up"></i> Me Gusta ${snapshot.val()[item].likeCount}</button> 
+                   <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "removePost('${item}')"><i class="far fa-trash-alt"></i> ELIMINAR</button>         
+                   <button class="w3-button w3-theme-d1 w3-margin-bottom" onclick = "editPost('${item}')"><i class="far fa-edit"></i>EDITAR</button>
+                   </div>
+                   </div> 
+                   </div><br>`;
+                  
             return div.appendChild(p)
         })
         return snapshot.val();
@@ -138,7 +140,7 @@ function like(postkey) {
 
 //console.log(valposteos());
 content.appendChild(div)
-botonpostea.addEventListener('click', () => {
+postPrivate.addEventListener('click', () => {
     let textVacio = post.value.trim();
     console.log(textVacio)
    if(post.value != '' && textVacio != "" ){
